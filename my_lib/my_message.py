@@ -12,7 +12,7 @@ from my_constants import LOGGING_DIR, LOGGING_NAME_PATH
 
 __version__ = "01.20201125.01"
 
-TermColor = {
+term_color = {
 	'HEADER': '\033[95m',
 	'OKBLUE': '\033[94m',
 	'OKGREEN': '\033[92m',
@@ -24,31 +24,32 @@ TermColor = {
 }
 
 
-def print_message(StrMessage: str, StrMessageType: str="I", LogOnly: bool=False):
+def print_message(message: str,
+                  message_type: str="I",
+                  log_only: bool=False):
 	str_date_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-	MessageType = StrMessageType.upper()
-	Message = str(StrMessage)
+	message_type = message_type.upper()
 
 	try:
-		MessageInfo = Message + TermColor["ENDC"]
-		MessageError = TermColor["FAIL"] + Message + TermColor["ENDC"]
-		MessageWarnig = TermColor["WARNING"] + Message + TermColor["ENDC"]
-		MessageOk = TermColor["OKGREEN"] + Message + TermColor["ENDC"]
+		message_info = message + term_color["ENDC"]
+		message_error = term_color["FAIL"] + message + term_color["ENDC"]
+		message_warnig = term_color["WARNING"] + message + term_color["ENDC"]
+		message_ok = term_color["OKGREEN"] + message + term_color["ENDC"]
 
 		LoggingMessage = {
-			"I": [logging.info, MessageInfo],
-			"OK": [logging.info, MessageOk],
-			"W": [logging.warning, MessageWarnig],
-			"E": [logging.error, MessageError],
+			"I": [logging.info, message_info],
+			"OK": [logging.info, message_ok],
+			"W": [logging.warning, message_warnig],
+			"E": [logging.error, message_error],
 		}
 
-		# LoggingMessage[MessageType][0](str(Message, encoding="1252"))
-		LoggingMessage[MessageType][0](Message
+		# LoggingMessage[message_type][0](str(message, encoding="1252"))
+		LoggingMessage[message_type][0](message
                                  		.encode(encoding='utf-8', errors='strict')
 										.decode(encoding="1252", errors="strict")
                                     )
-		if not LogOnly:
-			print(f"{str_date_now} #{MessageType}# {LoggingMessage.get(MessageType)[1]}")
+		if not log_only:
+			print(f"{str_date_now} #{message_type}# {LoggingMessage.get(message_type)[1]}")
 	except Exception as Error_print:
 		print(f"Erro em PrintMessage. Erro: {Error_print}")
 

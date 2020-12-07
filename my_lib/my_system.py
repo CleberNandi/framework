@@ -4,9 +4,9 @@ from time import strftime
 
 from my_message import print_message
 
-__version__ = "01.20201126.01"
+__version__ = "01.20201207.01"
 
-def GetDateTime():
+def get_date_time():
     return strftime("%Y%m%d-%H%M")
 
 if __name__ == "__main__":

@@ -6,10 +6,10 @@ import sys
 
 __version__ = "01.20201125.01"
 
-def GetHostnameLong():
+def get_hostname_long():
     return socket.getfqdn()
 
-def GetShortHostname():
+def get_short_hostname():
     Result = ""
     Hostname = socket.gethostname().upper()
     
@@ -18,7 +18,7 @@ def GetShortHostname():
     
     return Result
 
-def GetEnvironment(StrHostname):
+def get_environment(StrHostname):
     Result = "PD"
     ListTemp = StrHostname.split("-")
     
@@ -29,7 +29,7 @@ def GetEnvironment(StrHostname):
     
     return Result
 
-def GetDCLocation(StrHostname):
+def get_dc_location(StrHostname):
     Result = "LCW"
     ListHostname = StrHostname.split("-")
     

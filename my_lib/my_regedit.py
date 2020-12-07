@@ -11,40 +11,40 @@ from my_message import print_message
 __version__ = "20201202.01"
  
 def connect_root_key(root_key: object) -> object:
-	result = None
+	connect: object = None
 	
 	try:
-		root_key: str = ConnectRegistry(None, root_key)
-		result = root_key
+		root_key: object = ConnectRegistry(None, root_key)
+		connect = root_key
 		print_message(f"root key conectada com sucesso.")
 	except WindowsError:
 		pass
 	except Exception as error_root_key:
 		print_message(f"Falha ao tentar conectar em root key. Erro: {error_root_key}", "E")
 	
-	return result
+	return connect
 
 def open_key_in_path(connect_root_key: object, 
 					 path_key: str) -> object:
-	result = None
+	open_key: object = None
 	
 	try:
-		result = OpenKey(connect_root_key, path_key)
+		open_key = OpenKey(connect_root_key, path_key)
 		print_message(f"Chave {path_key} aberta com sucesso.")
 	except WindowsError:
 		pass
 	except Exception as error_open_key:
 		print_message(f"Falha ao tentar abrir chave {path_key}. Erro: {error_open_key}", "E")
 
-	return result
+	return open_key
 
 def get_key_recursive(connect_root_key: object) -> str:
-	i = 0
+	index: int = 0
 
 	try:
 		while True:
-			yield EnumKey(connect_root_key, i)
-			i += 1
+			yield EnumKey(connect_root_key, index)
+			index += 1
 	except WindowsError:
 		pass
 
@@ -65,36 +65,37 @@ def get_register_recursive(connect_root_key: object,
 def get_register_value_recursive(connect_root_key: object, 
 								 path_key: str, 
 								 search: dict = None) -> dict:
-	result = {}
+	values: dict = {}
 	for key_path in get_register_recursive(connect_root_key, path_key):
 		root_key = OpenKey(connect_root_key, key_path)
 		if search:
 			for search_key in search.items():
 				if search_key in key_path.split("\\")[-1]:
-					result[key_path] = QueryValue(root_key, None)
-	return result
+					values[key_path] = QueryValue(root_key, None)
+	return values
 
 def sub_keys(connect_root_key: object) -> str:
-	i = 0
+	index: int = 0
  
 	while True:
 		try:
-			subkey = EnumKey(connect_root_key, i)
+			subkey = EnumKey(connect_root_key, index)
 			yield subkey
-			i+=1
+			index += 1
 		except WindowsError:
 			break
 
 def get_values(root_key: object) -> dict:
-	key_dict = {}
-	i = 0
+	key_dict: dict = {}
+	index: int = 0
+ 
 	while True:
 		try:
-			subvalue = EnumValue(root_key, i)
+			subvalue = EnumValue(root_key, index)
 		except WindowsError:
 			break
 		key_dict[subvalue[0]] = subvalue[1:]
-		i+=1
+		index += 1
 	return key_dict
 
 def search_registry_way(root_key: object, 
@@ -127,13 +128,13 @@ def search_registry_way(root_key: object,
 	
 	return key_path_list
 
-def setKeyReg(connect_root_key: object, 
+def set_key_reg(connect_root_key: object, 
 			  key_path: str, 
 			  key_value_name: str, 
 			  key_type: object, 
 			  key_value_data: str) -> bool:
-	seeArchPath = key_path.split("\\") 
-	connReg =None
+	seeArchPath: list = key_path.split("\\") 
+	open_key: object = None
 
 	if "Wow6432Node" in seeArchPath:
 		flagArchKey = KEY_WOW64_32KEY
@@ -141,10 +142,10 @@ def setKeyReg(connect_root_key: object,
 		flagArchKey = KEY_WOW64_64KEY
 		
 	try:
-		connReg = OpenKeyEx(connect_root_key, key_path, access=KEY_WRITE | flagArchKey)
+		open_key = OpenKeyEx(connect_root_key, key_path, access=KEY_WRITE | flagArchKey)
 		print_message("Registro localizado com sucesso", "OK")
 		try: 
-			SetValueEx(connReg, key_value_name, 0, key_type, key_value_data)
+			SetValueEx(open_key, key_value_name, 0, key_type, key_value_data)
 			print_message(f"Nome Valor: {key_value_name}")
 			print_message(f"Valor: {key_value_data}")
 			print_message("Adicionado com sucesso", "OK")
@@ -158,10 +159,10 @@ def setKeyReg(connect_root_key: object,
 	except FileNotFoundError:
 		print_message("Registro não foi localizado. Tentando criar registro informado", "E")
 		try:
-			connReg = winreg.CreateKeyEx(connect_root_key, key_path, access=winreg.KEY_WRITE | flagArchKey)
+			open_key = winreg.CreateKeyEx(connect_root_key, key_path, access=winreg.KEY_WRITE | flagArchKey)
 			print_message("Registro criado com sucesso.")
 			try: 
-				SetValueEx(connReg, key_value_name, 0, key_type, key_value_data)
+				SetValueEx(open_key, key_value_name, 0, key_type, key_value_data)
 				print_message(f"Nome Valor: {key_value_name}")
 				print_message(f"Valor: {key_value_data}")
 				print_message("Adicionado com sucesso", "OK")

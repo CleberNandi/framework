@@ -1,13 +1,12 @@
 # encoding: utf-8
-import inspect
 import os
 import sys
 
 from configparser import ConfigParser
 
-from my_environment import GetShortHostname, GetHostnameLong, GetDCLocation, GetEnvironment
+from my_environment import get_short_hostname, get_hostname_long, get_dc_location, get_environment
 
-__version__ = "01.20201125.01"
+__version__ = "01.20201207.01"
 
 
 Conf = ConfigParser()
@@ -26,10 +25,10 @@ LOGGING_DIR = os.path.join(ROOT_PATH, "logs")
 LOGGING_NAME_PATH = os.path.join(LOGGING_DIR, SCRIPT_FRIENDLYNAME + ".log")
 START_SCRIPT_MESSAGE = " BEGIN ".center(72, "=")
 END_SCRIPT_MESSAGE = " END ".center(72, "=")
-HOSTNAME = GetShortHostname()
-HOSTNAME_LONG = GetHostnameLong()
-ENVIRONMENT = GetEnvironment(HOSTNAME)
-LOCATION = GetDCLocation(HOSTNAME)
+HOSTNAME = get_short_hostname()
+HOSTNAME_LONG = get_hostname_long()
+ENVIRONMENT = get_environment(HOSTNAME)
+LOCATION = get_dc_location(HOSTNAME)
 
 if __name__ == "__main__":
 	print(SCRIPT_FRIENDLYNAME)

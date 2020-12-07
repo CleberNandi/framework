@@ -1,5 +1,4 @@
 # encoding: utf-8
-import inspect
 import os
 import sys
 from configparser import ConfigParser

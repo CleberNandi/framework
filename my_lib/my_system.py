@@ -6,7 +6,7 @@ from my_message import print_message
 
 __version__ = "01.20201207.01"
 
-def get_date_time():
+def get_date_time() -> str:
     return strftime("%Y%m%d-%H%M")
 
 if __name__ == "__main__":

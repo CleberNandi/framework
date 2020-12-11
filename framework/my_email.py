@@ -10,8 +10,8 @@ from email import encoders
 from email.utils import formatdate
 from email.mime.application import MIMEApplication
 
-from my_constants import HOSTNAME, ENVIRONMENT, LOCATION, SCRIPT_FRIENDLYNAME
-from my_message import print_message
+from framework.my_constants import HOSTNAME, ENVIRONMENT, LOCATION, SCRIPT_FRIENDLYNAME
+from framework.my_message import print_message
 
 __version__ = "01.20201207.01"
 

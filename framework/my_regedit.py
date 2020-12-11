@@ -2,11 +2,10 @@
 import os
 import winreg
 
-from configparser import ConfigParser
 from winreg import ConnectRegistry, OpenKey, EnumKey, EnumValue, QueryValue, OpenKeyEx, SetValueEx
 from winreg import KEY_WRITE, KEY_WOW64_32KEY, KEY_WOW64_64KEY, CloseKey
 
-from my_message import print_message
+from framework.my_message import print_message
 
 __version__ = "20201202.01"
  

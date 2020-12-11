@@ -5,10 +5,9 @@ import logging
 import os
 import sys
 
-from configparser import ConfigParser
 from time import strftime
 
-from my_constants import LOGGING_DIR, LOGGING_NAME_PATH
+from framework.my_constants import LOGGING_DIR, LOGGING_NAME_PATH
 
 __version__ = "01.20201125.01"
 

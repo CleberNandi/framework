@@ -1,9 +1,8 @@
 # encoding: utf-8
 import os
 import sys
-from configparser import ConfigParser
 
-from my_message import print_message
+from framework.my_message import print_message
 
 __version__ = "01.20201125.01"
 

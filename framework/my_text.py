@@ -3,9 +3,7 @@ import inspect
 import os
 import sys
 
-from configparser import ConfigParser
-
-from my_message import print_message
+from framework.my_message import print_message
 
 __version__ = "01.20201207.01"
 
@@ -38,7 +36,7 @@ def list_files_on_dir(directory: str) -> list:
     
     return files
 
-def load_list_from_file(file_path: str) -> tuple(int, str):
+def load_list_from_file(file_path: str) -> tuple:
     files: list = []
     num_return: int = 0
     

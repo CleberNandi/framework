@@ -1,8 +1,7 @@
 # encoding: utf-8
-from configparser import ConfigParser
 from time import strftime
 
-from my_message import print_message
+from framework.my_message import print_message
 
 __version__ = "01.20201207.01"
 

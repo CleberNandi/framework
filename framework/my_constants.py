@@ -4,7 +4,7 @@ import sys
 
 from configparser import ConfigParser
 
-from my_environment import get_short_hostname, get_hostname_long, get_dc_location, get_environment
+from framework.my_environment import get_short_hostname, get_hostname_long, get_dc_location, get_environment
 
 __version__ = "01.20201207.01"
 
@@ -20,7 +20,6 @@ else:
 SCRIPT_FRIENDLYNAME = Conf.get("APP", "SCRIPT_FRIENDLYNAME")
 VERSION_APP = Conf.get("APP", "VERSION_APP")
 ROOT_PATH = os.path.abspath(os.getcwd())
-MODULE_PATH = Conf.get("PATH", "MODULES_PATH")
 LOGGING_DIR = os.path.join(ROOT_PATH, "logs")
 LOGGING_NAME_PATH = os.path.join(LOGGING_DIR, SCRIPT_FRIENDLYNAME + ".log")
 START_SCRIPT_MESSAGE = " BEGIN ".center(72, "=")
@@ -33,4 +32,3 @@ LOCATION = get_dc_location(HOSTNAME)
 if __name__ == "__main__":
 	print(SCRIPT_FRIENDLYNAME)
 	print(VERSION_APP)
-	print(MODULE_PATH)

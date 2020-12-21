@@ -5,35 +5,45 @@
 <p align="center">Este projeto serve para centralizar todas as funções padrão para serem usadas em meus projetos. Uma forma de criar uma espécie de lib personalizada.</p>
 
 
-## 🚀 Tecnologias
+<h2>🚀 Tecnologias</h2>
 
-- 🐍 Python 3.8
+<ul>
+  <li>🐍 Python 3.8</li>
+</ul>
 
-## ✋🏻 Pré-requisitos
+<h2>✋🏻 Pré-requisitos</h2>
 
-- [Python](https://www.python.org/downloads/)
+<ul>
+  <li>[Python](https://www.python.org/downloads/)</li>
+</ul>
 
-## 📎 Dependências
+<h2>📎 Dependências</h2>
 
-As dependências já devem ser instaladas ao executar instalação do projeto.
+<p>As dependências já devem ser instaladas ao executar instalação do projeto.</p>
 
-- [pyad](https://pypi.org/project/pyad/)
-- [pytest](https://pypi.org/project/pytest/)
+<ul>
+  <li>[pyad](https://pypi.org/project/pyad/)</li>
+  <li>[pytest](https://pypi.org/project/pytest/)</li>
+</ul>
 
-## 🔥 Instalação e execução
+<h2>🔥 Instalação e execução</h2>
 
-1. Faça um clone desse repositório;
-2. Entre na pasta `cd framework`;
-3. Rode `pip3 install .` para instalar as o framework e suas dependências;
+<ol>
+  <li>Faça um clone desse repositório;</li>
+  <li>Entre na pasta `cd framework`;</li>
+  <li>Rode `pip3 install .` para instalar as o framework e suas dependências;</li>
+</ol>
 
-## ⚡️ Como contribuir
+<h2>⚡️ Como contribuir</h2>
 
-- Faça um fork desse repositório;
-- Cria uma branch com a sua feature: `git checkout -b minha-feature`;
-- Faça commit das suas alterações: `git commit -m 'feat: Minha nova feature'`;
-- Faça push para a sua branch: `git push origin minha-feature`.
+<ul>
+  <li>Faça um fork desse repositório;</li>
+  <li>Cria uma branch com a sua feature: `git checkout -b minha-feature`;</li>
+  <li>Faça commit das suas alterações: `git commit -m 'feat: Minha nova feature'`;</li>
+  <li>Faça push para a sua branch: `git push origin minha-feature`.</li>
+</ul>
 
-Depois que o merge da sua pull request for feito, você pode deletar a sua branch.
+<p>Depois que o merge da sua pull request for feito, você pode deletar a sua branch.</p>
 
 <h2 align="center"> Atualizações</h2>
 <h3>Versão geral: 0.1.0</h3>

@@ -34,3 +34,11 @@ As dependências já devem ser instaladas ao executar instalação do projeto.
 - Faça push para a sua branch: `git push origin minha-feature`.
 
 Depois que o merge da sua pull request for feito, você pode deletar a sua branch.
+
+<h2 align="center"> Atualizações</h2>
+<h3>Versão geral: 0.1.0</h3>
+<h3>script: framework/my_system.py</h3>
+<h4>Versão: 01.20201221.01</h4>
+  <ul>
+    <li>Adicionado classes (Cmd e Command) para executar comandos externos dinamicamente.</li>
+  </ul>
